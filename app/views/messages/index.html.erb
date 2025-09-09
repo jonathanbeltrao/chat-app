@@ -4,75 +4,7 @@
   <title>Join Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .join-container {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 40px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    h1 {
-      color: #4a5568;
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    .username-input {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
-    }
-
-    .username-input:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-
-    .join-button {
-      background: #667eea;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: bold;
-      width: 100%;
-      transition: background-color 0.2s;
-    }
-
-    .join-button:hover {
-      background: #5a67d8;
-    }
-
-    .join-button:disabled {
-      background: #cbd5e0;
-      cursor: not-allowed;
-    }
-  </style>
+  <%= stylesheet_link_tag "username", "data-turbo-track": "reload" %>
 </head>
 <body>
   <div class="join-container">
@@ -81,66 +13,6 @@
     <button id="joinButton" class="join-button">Join Chat Room</button>
   </div>
 
-  <script>
-    class UsernameApp {
-      constructor() {
-        this.usernameInput = document.getElementById('username');
-        this.joinButton = document.getElementById('joinButton');
-        
-        this.bindEvents();
-        this.loadUsernameFromStorage();
-      }
-
-      bindEvents() {
-        this.joinButton.addEventListener('click', () => this.joinChat());
-        
-        this.usernameInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') {
-            this.joinChat();
-          }
-        });
-
-        this.usernameInput.addEventListener('input', () => {
-          const username = this.usernameInput.value.trim();
-          this.joinButton.disabled = username.length === 0;
-        });
-      }
-
-      loadUsernameFromStorage() {
-        const savedUsername = localStorage.getItem('chatUsername');
-        if (savedUsername) {
-          this.usernameInput.value = savedUsername;
-          this.joinButton.disabled = false;
-        } else {
-          this.joinButton.disabled = true;
-        }
-      }
-
-      joinChat() {
-        const username = this.usernameInput.value.trim();
-        
-        if (!username) {
-          alert('Please enter a username');
-          return;
-        }
-
-        if (username.length > 50) {
-          alert('Username must be 50 characters or less');
-          return;
-        }
-
-        // Save username to localStorage
-        localStorage.setItem('chatUsername', username);
-        
-        // Redirect to chat room
-        window.location.href = '/chat';
-      }
-    }
-
-    // Initialize the username app when the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      new UsernameApp();
-    });
-  </script>
+  <%= javascript_include_tag "username", "data-turbo-track": "reload" %>
 </body>
 </html>

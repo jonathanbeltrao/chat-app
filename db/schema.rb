@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_09_105755) do
-  create_table "active_users", primary_key: "username", id: { type: :string, limit: 255 }, force: :cascade do |t|
-    t.datetime "last_seen", precision: nil, null: false
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2025_09_09_202649) do
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
-    t.string "username", limit: 255, null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "username", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_messages_on_created_at"
   end
 
-  create_table "typing_status", primary_key: "username", id: { type: :string, limit: 255 }, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.datetime "last_seen_at"
     t.boolean "is_typing", default: false
-    t.datetime "last_typing", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["is_typing"], name: "index_users_on_is_typing"
+    t.index ["last_seen_at"], name: "index_users_on_last_seen_at"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 end

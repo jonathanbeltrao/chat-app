@@ -4,24 +4,35 @@ class TypingChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Remove user from typing when they disconnect
-    ActionCable.server.broadcast("typing", {
-      action: "stop_typing",
-      username: params[:username]
-    })
+    username = params[:username]
+    # Stop typing in database
+    User.find_by(username: username)&.stop_typing!
+    
+    # Broadcast updated typing list
+    broadcast_typing_list
   end
 
   def start_typing(data)
-    ActionCable.server.broadcast("typing", {
-      action: "start_typing",
-      username: data['username']
-    })
+    username = data['username']
+    User.mark_user_typing(username, true)
+    
+    broadcast_typing_list
   end
 
   def stop_typing(data)
+    username = data['username']
+    User.mark_user_typing(username, false)
+    
+    broadcast_typing_list
+  end
+
+  private
+
+  def broadcast_typing_list
+    typing_users = User.get_typing_users
     ActionCable.server.broadcast("typing", {
-      action: "stop_typing", 
-      username: data['username']
+      action: "typing_list_updated",
+      typing_users: typing_users
     })
   end
 end
