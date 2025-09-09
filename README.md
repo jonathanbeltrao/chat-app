@@ -28,7 +28,13 @@ rails db:create db:migrate
 rails server
 ```
 
-4. **Open in browser**
+4. **Run tests**
+
+```bash
+rails test
+```
+
+5. **Open in browser**
 
 ```
 http://localhost:3000
