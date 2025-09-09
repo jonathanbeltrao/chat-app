@@ -1,73 +1,58 @@
-# Real-Time Chat App
+# Challenge Chat App
 
-A real-time chat application built with Ruby on Rails, ActionCable WebSockets, and vanilla JavaScript.
+## Local Setup
 
-## Features
+### Prerequisites
 
-- 💬 **Real-time messaging** via ActionCable WebSockets
-- 👥 **Online users list** with live status updates
-- ⌨️ **Typing indicators** showing who's currently typing
-- 🎨 **Modern, responsive UI** with smooth animations
-- 💾 **Message persistence** with SQLite database
-- 🚀 **Pure vanilla JavaScript** - no frontend frameworks
-- 📱 **Mobile-responsive** design
+- Ruby 3.1+
+- Rails 7.2+
+- SQLite3
 
-## Architecture
+### Installation
 
-- **Backend**: Ruby on Rails 7.2 with ActionCable for WebSocket connections
-- **Database**: SQLite3 for message storage
-- **Frontend**: Pure vanilla JavaScript with ActionCable integration
-- **Real-time**: WebSocket connections for instant messaging, typing indicators, and user presence
+1. **Clone and install**
+
+```bash
+bundle install
+```
+
+2. **Setup database**
+
+```bash
+rails db:create db:migrate
+```
+
+3. **Start the server**
+
+```bash
+rails server
+```
+
+4. **Open in browser**
+
+```
+http://localhost:3000
+```
+
+## Tech Stack
+
+- **Backend**: Ruby on Rails 7.2 + ActionCable
+- **Database**: SQLite3
+- **Frontend**: Vanilla JavaScript + CSS
+- **Real-time**: WebSocket connections (Action Cable)
 
 ## Project Structure
 
 ```
-chat-app/
-├── app/
-│   ├── channels/
-│   │   ├── messages_channel.rb      # Real-time messaging channel
-│   │   ├── typing_channel.rb        # Typing indicators channel
-│   │   └── users_channel.rb         # Online users channel
-│   ├── controllers/
-│   │   └── messages_controller.rb   # Username selection & chat views
-│   ├── models/
-│   │   └── message.rb               # Message model with validations
-│   └── views/
-│       └── messages/
-│           ├── index.html.erb       # Username selection page
-│           └── chat.html.erb        # Chat interface with ActionCable
-├── config/
-│   ├── cable.yml                    # ActionCable configuration
-│   ├── database.yml                 # Database configuration
-│   └── routes.rb                    # Application routes
-├── db/
-│   └── migrate/
-│       └── create_messages.rb       # Database migration
-└── storage/
-    └── development.sqlite3          # SQLite database file
+app/
+├── channels/           # ActionCable channels for real-time features
+├── controllers/        # Rails controllers
+├── models/            # User and Message models
+├── views/             # HTML templates (using shared layout)
+├── assets/            # CSS and JavaScript files
+config/
+├── cable.yml          # ActionCable configuration
+├── routes.rb          # Application routes
+db/
+├── migrate/           # Database migrations
 ```
-
-## Quick Start
-
-```bash
-# Install dependencies
-bundle install
-
-# Set up database
-rails db:create db:migrate
-
-# Start the Rails server
-rails server
-```
-
-Then open your browser to: **http://localhost:3000**
-
-## Usage
-
-1. **Enter Username**: Start by entering your username on the welcome page
-2. **Join Chat**: Click "Join Chat Room" to enter the main chat interface
-3. **Send Messages**: Type messages and press Enter or click Send
-4. **See Live Activity**:
-   - View online users in the sidebar
-   - See typing indicators when others are typing
-   - Messages appear instantly via WebSocket connection
