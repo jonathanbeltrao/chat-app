@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Join Chat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "username", "data-turbo-track": "reload" %>
-</head>
-<body>
-  <div class="join-container">
-    <h1>Challenge Chat</h1>
-    <input type="text" id="username" class="username-input" placeholder="Enter your username..." maxlength="50" autofocus>
-    <button id="joinButton" class="join-button">Join Chat Room</button>
-  </div>
+<% content_for :title, "Join Chat" %>
 
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "username", "data-turbo-track": "reload" %>
+<% end %>
+
+<% content_for :javascripts do %>
   <%= javascript_include_tag "username", "data-turbo-track": "reload" %>
-</body>
-</html>
+<% end %>
+
+<div class="join-container">
+  <h1>Challenge Chat App</h1>
+  <input type="text" id="username" class="username-input" placeholder="Enter your username..." maxlength="50" autofocus>
+  <button id="joinButton" class="join-button">Join Chat Room</button>
+</div>

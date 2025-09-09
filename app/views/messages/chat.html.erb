@@ -1,57 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Chat App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
+<% content_for :title, "Chat App" %>
+
+<% content_for :stylesheets do %>
   <%= stylesheet_link_tag "chat", "data-turbo-track": "reload" %>
-</head>
-<body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <span>Chat App</span>
-      <button id="logoutButton" class="logout-button">Logout</button>
-    </div>
-    
-    <div class="chat-body">
-      <div class="users-sidebar">
-        <div class="users-title">Online Users</div>
-        <div id="usersList">
-          <div class="no-messages">Loading users...</div>
-        </div>
-      </div>
-      
-      <div class="messages-container" id="messages">
-        <% if @messages.any? %>
-          <% @messages.each do |message| %>
-            <div class="message">
-              <div class="message-header">
-                <span class="message-username"><%= message.username %></span>
-                <span class="message-time"><%= message.created_at.strftime("%I:%M %p") %></span>
-              </div>
-              <div class="message-content"><%= message.content %></div>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="no-messages">No messages yet. Start the conversation!</div>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="typing-indicator" id="typingIndicator" style="display: none;">
-      <span id="typingText"></span>
-    </div>
-    
-    <div class="chat-input-container">
-      <div class="input-group">
-        <input type="text" id="messageInput" class="message-input" placeholder="Type your message..." maxlength="500">
-        <button id="sendButton" class="send-button">Send</button>
-      </div>
-    </div>
-  </div>
+<% end %>
 
-
+<% content_for :javascripts do %>
   <%= javascript_include_tag "actioncable" %>
   <%= javascript_include_tag "chat", "data-turbo-track": "reload" %>
-</body>
-</html>
+<% end %>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <span>Challenge Chat App</span>
+    <button id="logoutButton" class="logout-button">Logout</button>
+  </div>
+  
+  <div class="chat-body">
+    <div class="users-sidebar">
+      <div class="users-title">Online Users</div>
+      <div id="usersList">
+        <div class="no-messages">Loading users...</div>
+      </div>
+    </div>
+    
+    <div class="messages-container" id="messages">
+      <% if @messages.any? %>
+        <% @messages.each do |message| %>
+          <div class="message">
+            <div class="message-header">
+              <span class="message-username"><%= message.username %></span>
+              <span class="message-time"><%= message.created_at.strftime("%I:%M %p") %></span>
+            </div>
+            <div class="message-content"><%= message.content %></div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="no-messages">No messages yet. Start the conversation!</div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="typing-indicator" id="typingIndicator" style="display: none;">
+    <span id="typingText"></span>
+  </div>
+  
+  <div class="chat-input-container">
+    <div class="input-group">
+      <input type="text" id="messageInput" class="message-input" placeholder="Type your message..." maxlength="500">
+      <button id="sendButton" class="send-button">Send</button>
+    </div>
+  </div>
+</div>

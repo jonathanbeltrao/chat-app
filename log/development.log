@@ -2907,3 +2907,367 @@ UsersChannel#update_activity({"username"=>"Testing"})
 UsersChannel#update_activity({"username"=>"Testing"})
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
   ↳ app/models/user.rb:11:in `mark_user_online'
+UsersChannel#update_activity({"username"=>"Testing"})
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11:in `mark_user_online'
+Started GET "/" for ::1 at 2025-09-09 18:00:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.2ms)
+Completed 200 OK in 25ms (Views: 8.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 18:00:09 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:27
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:28
+  Rendered messages/chat.html.erb within layouts/application (Duration: 3.2ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.4ms)
+Completed 200 OK in 56ms (Views: 3.2ms | ActiveRecord: 5.2ms (2 queries, 0 cached) | GC: 29.7ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 18:00:10 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:10 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11:in `mark_user_online'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:11:in `mark_user_online'
+  [1m[36mUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11:in `mark_user_online'
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "is_online", "is_typing", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "Jones"], ["is_online", 0], ["is_typing", 0], ["created_at", "2025-09-09 21:00:10.172518"], ["updated_at", "2025-09-09 21:00:10.172518"]]
+UsersChannel is streaming from users
+  ↳ app/models/user.rb:11:in `mark_user_online'
+TypingChannel is transmitting the subscription confirmation
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+TypingChannel is streaming from typing
+  ↳ app/models/user.rb:11:in `mark_user_online'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 1], ["updated_at", "2025-09-09 21:00:10.176040"], ["id", 5]]
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones", "Testing"]}
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones", "Testing"]} (via streamed from users)
+Started GET "/cable" for ::1 at 2025-09-09 18:00:12 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:12 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+MessagesChannel is transmitting the subscription confirmation
+  ↳ app/models/user.rb:11:in `mark_user_online'
+MessagesChannel is streaming from messages
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+UsersChannel is streaming from users
+  ↳ app/models/user.rb:35:in `get_online_users'
+TypingChannel is transmitting the subscription confirmation
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones", "Testing"]}
+TypingChannel is streaming from typing
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones", "Testing"]} (via streamed from users)
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones", "Testing"]} (via streamed from users)
+UsersChannel#update_activity({"username"=>"Testing"})
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11:in `mark_user_online'
+TypingChannel#start_typing({"username"=>"Jones"})
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25:in `mark_user_typing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mUser Update (2.5ms)[0m  [1m[33mUPDATE "users" SET "is_typing" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_typing", 1], ["updated_at", "2025-09-09 21:00:16.458484"], ["id", 5]]
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mUser Pluck (0.6ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>["Jones"]}
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>["Jones"]} (via streamed from typing)
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>["Jones"]} (via streamed from typing)
+TypingChannel#stop_typing({"username"=>"Jones"})
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25:in `mark_user_typing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "is_typing" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_typing", 0], ["updated_at", "2025-09-09 21:00:18.849901"], ["id", 5]]
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:26:in `mark_user_typing'
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+MessagesChannel#speak({"message"=>"ola", "username"=>"Jones"})
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mMessage Create (2.5ms)[0m  [1m[32mINSERT INTO "messages" ("content", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["content", "ola"], ["username", "Jones"], ["created_at", "2025-09-09 21:00:20.083204"], ["updated_at", "2025-09-09 21:00:20.083204"]]
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+[ActionCable] Broadcasting to messages: {:id=>6, :content=>"ola", :username=>"Jones", :created_at=>"09:00 PM"}
+MessagesChannel transmitting {"id"=>6, "content"=>"ola", "username"=>"Jones", "created_at"=>"09:00 PM"} (via streamed from messages)
+MessagesChannel transmitting {"id"=>6, "content"=>"ola", "username"=>"Jones", "created_at"=>"09:00 PM"} (via streamed from messages)
+Started POST "/logout" for ::1 at 2025-09-09 18:00:29 -0300
+Processing by MessagesController#logout as */*
+  Parameters: {"username"=>"Testing", "message"=>{"username"=>"Testing"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 0], ["updated_at", "2025-09-09 21:00:29.789692"], ["id", 4]]
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones"]}
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+Completed 200 OK in 10ms (ActiveRecord: 2.5ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:29 -0300
+MessagesChannel stopped streaming from messages
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones"]}
+UsersChannel stopped streaming from users
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Testing"], ["LIMIT", 1]]
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+  ↳ app/channels/typing_channel.rb:9:in `unsubscribed'
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Started GET "/" for ::1 at 2025-09-09 18:00:29 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 18:00:29 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-09 18:00:31 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 18:00:31 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+UsersChannel#update_activity({"username"=>"Jones"})
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:11:in `mark_user_online'
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:51 -0300
+MessagesChannel stopped streaming from messages
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+Started GET "/chat" for ::1 at 2025-09-09 18:00:51 -0300
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 0], ["updated_at", "2025-09-09 21:00:51.565247"], ["id", 5]]
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>[]}
+UsersChannel stopped streaming from users
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>[]} (via streamed from users)
+  ↳ app/channels/typing_channel.rb:9:in `unsubscribed'
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:27
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:28
+  Rendered messages/chat.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 4.4ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 18:00:51 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:51 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+MessagesChannel is transmitting the subscription confirmation
+  ↳ app/models/user.rb:11:in `mark_user_online'
+MessagesChannel is streaming from messages
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+TypingChannel is transmitting the subscription confirmation
+  ↳ app/models/user.rb:12:in `mark_user_online'
+TypingChannel is streaming from typing
+UsersChannel is streaming from users
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 1], ["updated_at", "2025-09-09 21:00:51.980002"], ["id", 5]]
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones"]}
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:57 -0300
+MessagesChannel stopped streaming from messages
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 0], ["updated_at", "2025-09-09 21:00:57.567140"], ["id", 5]]
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+Started GET "/chat" for ::1 at 2025-09-09 18:00:57 -0300
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>[]}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>[]} (via streamed from users)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/channels/typing_channel.rb:9:in `unsubscribed'
+  [1m[36mUser Pluck (0.5ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:27
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:28
+  Rendered messages/chat.html.erb within layouts/application (Duration: 1.9ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.1ms)
+Completed 200 OK in 9ms (Views: 3.8ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 18:00:57 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 18:00:57 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+MessagesChannel is transmitting the subscription confirmation
+  ↳ app/models/user.rb:11:in `mark_user_online'
+MessagesChannel is streaming from messages
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+UsersChannel is streaming from users
+  ↳ app/models/user.rb:12:in `mark_user_online'
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 1], ["updated_at", "2025-09-09 21:00:57.961925"], ["id", 5]]
+  ↳ app/models/user.rb:12:in `mark_user_online'
+TypingChannel is transmitting the subscription confirmation
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:12:in `mark_user_online'
+TypingChannel is streaming from typing
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>["Jones"]}
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>["Jones"]} (via streamed from users)
+Started GET "/" for ::1 at 2025-09-09 18:01:08 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 18:01:08 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/logout" for ::1 at 2025-09-09 18:01:14 -0300
+Processing by MessagesController#logout as */*
+  Parameters: {"username"=>"Jones", "message"=>{"username"=>"Jones"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "is_online" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["is_online", 0], ["updated_at", "2025-09-09 21:01:14.107838"], ["id", 5]]
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:19:in `mark_user_offline'
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>[]}
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>[]} (via streamed from users)
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+Completed 200 OK in 9ms (ActiveRecord: 1.9ms (4 queries, 0 cached) | GC: 0.9ms)
+
+
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 18:01:14 -0300
+MessagesChannel stopped streaming from messages
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `mark_user_offline'
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1]]
+  ↳ app/models/user.rb:35:in `get_online_users'
+[ActionCable] Broadcasting to users: {:action=>"users_list_updated", :users=>[]}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"users_list_updated", "users"=>[]} (via streamed from users)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jones"], ["LIMIT", 1]]
+  ↳ app/channels/typing_channel.rb:9:in `unsubscribed'
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."username" FROM "users" WHERE "users"."is_online" = ? AND "users"."is_typing" = ? ORDER BY "users"."username" ASC[0m  [["is_online", 1], ["is_typing", 1]]
+  ↳ app/models/user.rb:39:in `get_typing_users'
+[ActionCable] Broadcasting to typing: {:action=>"typing_list_updated", :typing_users=>[]}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"typing_list_updated", "typing_users"=>[]} (via streamed from typing)
+Started GET "/" for ::1 at 2025-09-09 18:01:14 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
