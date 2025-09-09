@@ -1,0 +1,16 @@
+# Test fixtures for messages
+first_message:
+  username: "alice"
+  content: "Hello everyone!"
+
+second_message:
+  username: "bob"
+  content: "Hey there, how's it going?"
+
+empty_content:
+  username: "charlie"
+  content: ""
+
+long_message:
+  username: "dave"
+  content: "This is a really long message that should still be valid because our Message model doesn't have a maximum length constraint, which is fine for a simple chat application like this one."
