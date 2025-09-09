@@ -1,0 +1,646 @@
+Started GET "/" for ::1 at 2025-09-09 17:06:40 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:161
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/index.html.erb:162
+  Rendered messages/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 436.9ms | GC: 25.4ms)
+Completed 200 OK in 508ms (Views: 444.4ms | ActiveRecord: 2.4ms (2 queries, 0 cached) | GC: 25.4ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:06:41 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:06:41 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:06:41 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-09-09 17:06:43 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:161
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/index.html.erb:162
+  Rendered messages/index.html.erb within layouts/application (Duration: 17.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.0ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:06:43 -0300
+MessagesChannel stopped streaming from messages
+Started GET "/cable" for ::1 at 2025-09-09 17:06:43 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:06:43 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:06:43 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+MessagesChannel is transmitting the subscription confirmation
+  Rendered pwa/manifest.json.erb (Duration: 0.2ms | GC: 0.0ms)
+MessagesChannel is streaming from messages
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-09-09 20:12:28.090730', '2025-09-09 20:12:28.090733') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" for ::1 at 2025-09-09 17:13:37 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:13:37 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:13:37 -0300
+MessagesChannel stopped streaming from messages
+Started GET "/" for ::1 at 2025-09-09 17:13:39 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 4.6ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 54.8ms | GC: 30.6ms)
+Completed 200 OK in 77ms (Views: 58.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 31.2ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:13:40 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:13:43 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 5.5ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.4ms)
+Completed 200 OK in 32ms (Views: 6.2ms | ActiveRecord: 4.8ms (2 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:13:43 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:13:43 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:13:43 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+MessagesChannel is transmitting the subscription confirmation
+  Rendered pwa/manifest.json.erb (Duration: 2.0ms | GC: 0.2ms)
+MessagesChannel is streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Jonathan"}
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+UsersChannel is streaming from users
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Jonathan"} (via streamed from users)
+TypingChannel#start_typing({"username"=>"Jonathan"})
+[ActionCable] Broadcasting to typing: {:action=>"start_typing", :username=>"Jonathan"}
+TypingChannel transmitting {"action"=>"start_typing", "username"=>"Jonathan"} (via streamed from typing)
+MessagesChannel#speak({"message"=>"testing", "username"=>"Jonathan"})
+TypingChannel#stop_typing({"username"=>"Jonathan"})
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Jonathan"}
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mMessage Create (1.9ms)[0m  [1m[32mINSERT INTO "messages" ("content", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["content", "testing"], ["username", "Jonathan"], ["created_at", "2025-09-09 20:13:48.059134"], ["updated_at", "2025-09-09 20:13:48.059134"]]
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Jonathan"} (via streamed from typing)
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+[ActionCable] Broadcasting to messages: {:id=>12, :content=>"testing", :username=>"Jonathan", :created_at=>"08:13 PM"}
+MessagesChannel transmitting {"id"=>12, "content"=>"testing", "username"=>"Jonathan", "created_at"=>"08:13 PM"} (via streamed from messages)
+Started GET "/" for ::1 at 2025-09-09 17:13:53 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:13:54 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.0ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:13:56 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 5.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:13:56 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:13:56 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:13:56 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+MessagesChannel is transmitting the subscription confirmation
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+  Rendered pwa/manifest.json.erb (Duration: 0.7ms | GC: 0.0ms)
+MessagesChannel is streaming from messages
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+UsersChannel is streaming from users
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+Started GET "/chat" for ::1 at 2025-09-09 17:13:59 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:13:59 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+TypingChannel stopped streaming from typing
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+Started GET "/cable" for ::1 at 2025-09-09 17:13:59 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:13:59 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:00 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+Processing by Rails::PwaController#manifest as JSON
+UsersChannel is transmitting the subscription confirmation
+UsersChannel is streaming from users
+  Rendering pwa/manifest.json.erb
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel is transmitting the subscription confirmation
+  Rendered pwa/manifest.json.erb (Duration: 0.6ms | GC: 0.0ms)
+TypingChannel is streaming from typing
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:14:04 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 6.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:04 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Jonathan"}
+UsersChannel stopped streaming from users
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Jonathan"}
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Jonathan"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Jonathan"} (via streamed from users)
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Jonathan"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Jonathan"} (via streamed from typing)
+Started GET "/cable" for ::1 at 2025-09-09 17:14:04 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:14:04 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:04 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+  Rendered pwa/manifest.json.erb (Duration: 0.7ms | GC: 0.0ms)
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+UsersChannel is streaming from users
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+Started GET "/chat" for ::1 at 2025-09-09 17:14:07 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 5.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:07 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+Started GET "/cable" for ::1 at 2025-09-09 17:14:07 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:14:07 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:07 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+MessagesChannel is transmitting the subscription confirmation
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+MessagesChannel is streaming from messages
+  Rendered pwa/manifest.json.erb (Duration: 0.2ms | GC: 0.0ms)
+UsersChannel is streaming from users
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel is streaming from typing
+Started GET "/chat" for ::1 at 2025-09-09 17:14:08 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 6.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:08 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+Started GET "/cable" for ::1 at 2025-09-09 17:14:08 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:14:08 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:08 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+UsersChannel is streaming from users
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+Started GET "/" for ::1 at 2025-09-09 17:14:17 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:14:21 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:14:21 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:21 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"JOnathan"}
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+UsersChannel is streaming from users
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"JOnathan"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"JOnathan"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"JOnathan"} (via streamed from users)
+Started GET "/chat" for ::1 at 2025-09-09 17:14:25 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:25 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+Started GET "/cable" for ::1 at 2025-09-09 17:14:25 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:14:25 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:25 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel is streaming from users
+TypingChannel#start_typing({"username"=>"JOnathan"})
+[ActionCable] Broadcasting to typing: {:action=>"start_typing", :username=>"JOnathan"}
+TypingChannel transmitting {"action"=>"start_typing", "username"=>"JOnathan"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"start_typing", "username"=>"JOnathan"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"start_typing", "username"=>"JOnathan"} (via streamed from typing)
+TypingChannel#stop_typing({"username"=>"JOnathan"})
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"JOnathan"}
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"JOnathan"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"JOnathan"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"JOnathan"} (via streamed from typing)
+UsersChannel#update_activity({"username"=>"Fabricia"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"Fabricia"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+MessagesChannel#speak({"message"=>"Olá", "username"=>"JOnathan"})
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mMessage Create (3.7ms)[0m  [1m[32mINSERT INTO "messages" ("content", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["content", "Olá"], ["username", "JOnathan"], ["created_at", "2025-09-09 20:14:39.899251"], ["updated_at", "2025-09-09 20:14:39.899251"]]
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+[ActionCable] Broadcasting to messages: {:id=>13, :content=>"Olá", :username=>"JOnathan", :created_at=>"08:14 PM"}
+MessagesChannel transmitting {"id"=>13, "content"=>"Olá", "username"=>"JOnathan", "created_at"=>"08:14 PM"} (via streamed from messages)
+MessagesChannel transmitting {"id"=>13, "content"=>"Olá", "username"=>"JOnathan", "created_at"=>"08:14 PM"} (via streamed from messages)
+MessagesChannel transmitting {"id"=>13, "content"=>"Olá", "username"=>"JOnathan", "created_at"=>"08:14 PM"} (via streamed from messages)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:14:49 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+TypingChannel stopped streaming from typing
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+UsersChannel#update_activity({"username"=>"JOnathan"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"JOnathan"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"JOnathan"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"JOnathan"} (via streamed from users)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:15:01 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"Fabricia"}
+UsersChannel stopped streaming from users
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"Fabricia"}
+UsersChannel transmitting {"action"=>"user_left", "username"=>"Fabricia"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel stopped streaming from typing
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"Fabricia"} (via streamed from typing)
+TypingChannel#start_typing({"username"=>"JOnathan"})
+[ActionCable] Broadcasting to typing: {:action=>"start_typing", :username=>"JOnathan"}
+TypingChannel transmitting {"action"=>"start_typing", "username"=>"JOnathan"} (via streamed from typing)
+MessagesChannel#speak({"message"=>"Ola", "username"=>"JOnathan"})
+TypingChannel#stop_typing({"username"=>"JOnathan"})
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"JOnathan"}
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mMessage Create (3.4ms)[0m  [1m[32mINSERT INTO "messages" ("content", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["content", "Ola"], ["username", "JOnathan"], ["created_at", "2025-09-09 20:15:04.604921"], ["updated_at", "2025-09-09 20:15:04.604921"]]
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"JOnathan"} (via streamed from typing)
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/messages_channel.rb:11:in `speak'
+[ActionCable] Broadcasting to messages: {:id=>14, :content=>"Ola", :username=>"JOnathan", :created_at=>"08:15 PM"}
+MessagesChannel transmitting {"id"=>14, "content"=>"Ola", "username"=>"JOnathan", "created_at"=>"08:15 PM"} (via streamed from messages)
+Finished "/cable" [WebSocket] for ::1 at 2025-09-09 17:15:06 -0300
+MessagesChannel stopped streaming from messages
+[ActionCable] Broadcasting to users: {:action=>"user_left", :username=>"JOnathan"}
+UsersChannel stopped streaming from users
+[ActionCable] Broadcasting to typing: {:action=>"stop_typing", :username=>"JOnathan"}
+TypingChannel stopped streaming from typing
+UsersChannel transmitting {"action"=>"user_left", "username"=>"JOnathan"} (via streamed from users)
+TypingChannel transmitting {"action"=>"stop_typing", "username"=>"JOnathan"} (via streamed from typing)
+Started GET "/messages" for ::1 at 2025-09-09 17:15:07 -0300
+Started GET "/typing" for ::1 at 2025-09-09 17:15:07 -0300
+Started GET "/users" for ::1 at 2025-09-09 17:15:07 -0300
+Processing by MessagesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/activity" for ::1 at 2025-09-09 17:15:07 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/typing"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+  
+ActionController::RoutingError (No route matches [POST] "/users/activity"):
+  
+Started POST "/users/activity" for ::1 at 2025-09-09 17:15:09 -0300
+Started GET "/messages" for ::1 at 2025-09-09 17:15:09 -0300
+Started GET "/users" for ::1 at 2025-09-09 17:15:09 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/users/activity"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Processing by MessagesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.4ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/typing" for ::1 at 2025-09-09 17:15:09 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/typing"):
+  
+Started GET "/" for ::1 at 2025-09-09 17:15:11 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:15:15 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 6.8ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 1.6ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:15:15 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:15:15 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Jonathan Incognito"}
+UsersChannel is streaming from users
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+UsersChannel is transmitting the subscription confirmation
+TypingChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Jonathan Incognito"} (via streamed from users)
+TypingChannel is streaming from typing
+Started GET "/" for ::1 at 2025-09-09 17:15:21 -0300
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  Rendered messages/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.3ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:15:21 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/chat" for ::1 at 2025-09-09 17:15:23 -0300
+Processing by MessagesController#chat as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/chat.html.erb within layouts/application
+  [1m[36mMessage Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "messages" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/messages/chat.html.erb:245
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY "messages"."created_at" ASC LIMIT ?[0m  [["LIMIT", 50]]
+  ↳ app/views/messages/chat.html.erb:246
+  Rendered messages/chat.html.erb within layouts/application (Duration: 6.8ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | GC: 0.5ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/cable" for ::1 at 2025-09-09 17:15:23 -0300
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:15:23 -0300
+Started GET "/cable" [WebSocket] for ::1 at 2025-09-09 17:15:23 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+[ActionCable] Broadcasting to users: {:action=>"user_joined", :username=>"Fabricia"}
+UsersChannel is transmitting the subscription confirmation
+UsersChannel transmitting {"action"=>"user_joined", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel is streaming from users
+TypingChannel is transmitting the subscription confirmation
+TypingChannel is streaming from typing
+MessagesChannel is transmitting the subscription confirmation
+MessagesChannel is streaming from messages
+Started GET "/manifest.json" for ::1 at 2025-09-09 17:15:30 -0300
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2025-09-09 17:15:30 -0300
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+UsersChannel#update_activity({"username"=>"Jonathan Incognito"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"Jonathan Incognito"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Jonathan Incognito"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Jonathan Incognito"} (via streamed from users)
+UsersChannel#update_activity({"username"=>"Fabricia"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"Fabricia"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel#update_activity({"username"=>"Jonathan Incognito"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"Jonathan Incognito"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Jonathan Incognito"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Jonathan Incognito"} (via streamed from users)
+UsersChannel#update_activity({"username"=>"Fabricia"})
+[ActionCable] Broadcasting to users: {:action=>"user_activity", :username=>"Fabricia"}
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)
+UsersChannel transmitting {"action"=>"user_activity", "username"=>"Fabricia"} (via streamed from users)

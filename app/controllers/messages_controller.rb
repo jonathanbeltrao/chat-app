@@ -1,5 +1,9 @@
 class MessagesController < ApplicationController
   def index
+    # Username selection page
+  end
+
+  def chat
     @messages = Message.recent.limit(50)
     @message = Message.new
   end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # Chat application routes
   root "messages#index"
+  get "chat", to: "messages#chat"
   resources :messages, only: [:index, :create]
   
   # Action Cable route

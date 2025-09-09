@@ -1,20 +1,23 @@
-# Simple Chat App
+# Real-Time Chat App
 
-A real-time chat application built with Ruby on Rails, Action Cable, and vanilla JavaScript.
+A real-time chat application built with Ruby on Rails, ActionCable WebSockets, and vanilla JavaScript.
 
 ## Features
 
-- 💬 Real-time messaging
-- 👥 Multiple users support
-- 🎨 Modern, responsive UI
-- 💾 Message persistence with SQLite
-- 🚀 No external dependencies for frontend
+- 💬 **Real-time messaging** via ActionCable WebSockets
+- 👥 **Online users list** with live status updates
+- ⌨️ **Typing indicators** showing who's currently typing
+- 🎨 **Modern, responsive UI** with smooth animations
+- 💾 **Message persistence** with SQLite database
+- 🚀 **Pure vanilla JavaScript** - no frontend frameworks
+- 📱 **Mobile-responsive** design
 
 ## Architecture
 
-- **Backend**: Ruby on Rails 7.2 with Action Cable for WebSocket connections
+- **Backend**: Ruby on Rails 7.2 with ActionCable for WebSocket connections
 - **Database**: SQLite3 for message storage
-- **Frontend**: Pure vanilla JavaScript with WebSocket integration
+- **Frontend**: Pure vanilla JavaScript with ActionCable integration
+- **Real-time**: WebSocket connections for instant messaging, typing indicators, and user presence
 
 ## Project Structure
 
@@ -22,36 +25,49 @@ A real-time chat application built with Ruby on Rails, Action Cable, and vanilla
 chat-app/
 ├── app/
 │   ├── channels/
-│   │   └── messages_channel.rb      # Action Cable channel for real-time messaging
+│   │   ├── messages_channel.rb      # Real-time messaging channel
+│   │   ├── typing_channel.rb        # Typing indicators channel
+│   │   └── users_channel.rb         # Online users channel
 │   ├── controllers/
-│   │   └── messages_controller.rb   # HTTP API for message CRUD
+│   │   └── messages_controller.rb   # Username selection & chat views
 │   ├── models/
 │   │   └── message.rb               # Message model with validations
 │   └── views/
 │       └── messages/
-│           └── index.html.erb       # Chat interface with vanilla JS
+│           ├── index.html.erb       # Username selection page
+│           └── chat.html.erb        # Chat interface with ActionCable
 ├── config/
-│   ├── cable.yml                    # Action Cable configuration
+│   ├── cable.yml                    # ActionCable configuration
 │   ├── database.yml                 # Database configuration
 │   └── routes.rb                    # Application routes
 ├── db/
 │   └── migrate/
 │       └── create_messages.rb       # Database migration
-├── simple_server.rb                 # Alternative simple HTTP server
 └── storage/
     └── development.sqlite3          # SQLite database file
 ```
 
-## Quick Start (Alternative Simple Server)
-
-Due to some gem conflicts with the Rails environment, I've created a simple HTTP server that works independently:
+## Quick Start
 
 ```bash
-# Install required gems (if not already installed)
-gem install webrick sqlite3
+# Install dependencies
+bundle install
 
-# Start the simple server
-ruby simple_server.rb
+# Set up database
+rails db:create db:migrate
+
+# Start the Rails server
+rails server
 ```
 
 Then open your browser to: **http://localhost:3000**
+
+## Usage
+
+1. **Enter Username**: Start by entering your username on the welcome page
+2. **Join Chat**: Click "Join Chat Room" to enter the main chat interface
+3. **Send Messages**: Type messages and press Enter or click Send
+4. **See Live Activity**:
+   - View online users in the sidebar
+   - See typing indicators when others are typing
+   - Messages appear instantly via WebSocket connection
