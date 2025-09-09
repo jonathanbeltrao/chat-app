@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Chat application routes
   root "messages#index"
   get "chat", to: "messages#chat"
+  post "logout", to: "messages#logout"
   resources :messages, only: [:index, :create]
   
   # Action Cable route

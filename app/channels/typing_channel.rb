@@ -5,7 +5,7 @@ class TypingChannel < ApplicationCable::Channel
 
   def unsubscribed
     username = params[:username]
-    # Stop typing in database
+    # Stop typing when user disconnects
     User.find_by(username: username)&.stop_typing!
     
     # Broadcast updated typing list

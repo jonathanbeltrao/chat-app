@@ -10,7 +10,6 @@ class ChatApp {
     this.messagesContainer = document.getElementById("messages");
     this.messageInput = document.getElementById("messageInput");
     this.sendButton = document.getElementById("sendButton");
-    this.logoutButton = document.getElementById("logoutButton");
     this.usersList = document.getElementById("usersList");
     this.typingIndicator = document.getElementById("typingIndicator");
     this.typingText = document.getElementById("typingText");
@@ -91,8 +90,6 @@ class ChatApp {
 
   bindEvents() {
     this.sendButton.addEventListener("click", () => this.sendMessage());
-
-    this.logoutButton.addEventListener("click", () => this.logout());
 
     this.messageInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -281,47 +278,6 @@ class ChatApp {
     setTimeout(() => {
       this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }, 100);
-  }
-
-  logout() {
-    // Confirm logout
-    if (!confirm("Are you sure you want to logout?")) {
-      return;
-    }
-
-    // Send logout request to server
-    const csrfToken = document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content");
-
-    fetch("/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
-      },
-      body: JSON.stringify({
-        username: this.username,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Clear username from localStorage
-          localStorage.removeItem("chatUsername");
-
-          // Disconnect from ActionCable
-          this.destroy();
-
-          // Redirect to username selection page
-          window.location.href = "/";
-        } else {
-          throw new Error("Failed to logout");
-        }
-      })
-      .catch((error) => {
-        console.error("Error during logout:", error);
-        alert("Failed to logout. Please try again.");
-      });
   }
 
   // Cleanup method

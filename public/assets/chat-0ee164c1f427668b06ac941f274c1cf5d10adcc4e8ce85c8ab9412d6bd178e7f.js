@@ -290,38 +290,36 @@ class ChatApp {
     }
 
     // Send logout request to server
-    const csrfToken = document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content");
-
-    fetch("/logout", {
-      method: "POST",
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+    fetch('/logout', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
       },
       body: JSON.stringify({
-        username: this.username,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Clear username from localStorage
-          localStorage.removeItem("chatUsername");
-
-          // Disconnect from ActionCable
-          this.destroy();
-
-          // Redirect to username selection page
-          window.location.href = "/";
-        } else {
-          throw new Error("Failed to logout");
-        }
+        username: this.username
       })
-      .catch((error) => {
-        console.error("Error during logout:", error);
-        alert("Failed to logout. Please try again.");
-      });
+    })
+    .then(response => {
+      if (response.ok) {
+        // Clear username from localStorage
+        localStorage.removeItem('chatUsername');
+        
+        // Disconnect from ActionCable
+        this.destroy();
+        
+        // Redirect to username selection page
+        window.location.href = '/';
+      } else {
+        throw new Error('Failed to logout');
+      }
+    })
+    .catch(error => {
+      console.error('Error during logout:', error);
+      alert('Failed to logout. Please try again.');
+    });
   }
 
   // Cleanup method
