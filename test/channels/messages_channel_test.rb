@@ -4,7 +4,8 @@ class MessagesChannelTest < ActionCable::Channel::TestCase
   test "subscribes to messages channel" do
     subscribe
     assert subscription.confirmed?
-    assert_has_stream "messages"
+    room = Room.default_room
+    assert_has_stream "messages_room_#{room.id}"
   end
 
   test "can send message through channel" do
@@ -20,8 +21,9 @@ class MessagesChannelTest < ActionCable::Channel::TestCase
 
   test "broadcasts message after creation" do
     subscribe
+    room = Room.default_room
     
-    assert_broadcasts("messages", 1) do
+    assert_broadcasts("messages_room_#{room.id}", 1) do
       perform :speak, { 
         username: "testuser", 
         message: "Test message" 

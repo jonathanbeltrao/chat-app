@@ -25,6 +25,10 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
       }
     end
     assert_response :success
+    
+    # Verify message was created in default room
+    message = Message.last
+    assert_equal Room.default_room, message.room
   end
 
   test "should not create message with invalid params" do

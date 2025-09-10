@@ -4,15 +4,17 @@ class MessagesController < ApplicationController
   end
 
   def chat
-    @messages = Message.recent.limit(50)
+    @room = Room.default_room
+    @messages = @room.messages.recent.limit(50)
     @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
+    room = Room.default_room
+    @message = Message.new(message_params.merge(room: room))
     
     if @message.save
-      ActionCable.server.broadcast("messages", {
+      ActionCable.server.broadcast("messages_room_#{room.id}", {
         id: @message.id,
         content: @message.content,
         username: @message.username,
