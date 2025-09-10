@@ -22,6 +22,7 @@ class ChatApp {
 
     this.initializeActionCable();
     this.bindEvents();
+    this.styleExistingMessages();
     this.scrollToBottom();
   }
 
@@ -116,6 +117,22 @@ class ChatApp {
     }, 30000); // Every 30 seconds
   }
 
+  styleExistingMessages() {
+    // Apply correct styling to existing server-rendered messages
+    const existingMessages =
+      this.messagesContainer.querySelectorAll(".message");
+    existingMessages.forEach((messageDiv) => {
+      const usernameElement = messageDiv.querySelector(");
+      if (usernameElement) {
+        const messageUsername = usernameElement.textContent.trim();
+        const isOwnMessage = messageUsername === this.username;
+        messageDiv.className = `message ${
+          isOwnMessage ? "message-own" : "message-other"
+        }`;
+      }
+    });
+  }
+
   sendMessage() {
     const content = this.messageInput.value.trim();
 
@@ -148,7 +165,11 @@ class ChatApp {
     }
 
     const messageDiv = document.createElement("div");
-    messageDiv.className = "message";
+    const isOwnMessage = message.username === this.username;
+    messageDiv.className = `message ${
+      isOwnMessage ? "message-own" : "message-other"
+    }`;
+
     messageDiv.innerHTML = `
       <div class="message-header">
         <span class="message-username">${this.escapeHtml(
