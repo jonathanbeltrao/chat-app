@@ -2,13 +2,15 @@ require "test_helper"
 
 class TypingChannelTest < ActionCable::Channel::TestCase
   test "subscribes to typing channel" do
-    subscribe
+    room = Room.default_room
+    subscribe(room_id: room.id)
     assert subscription.confirmed?
-    assert_has_stream "typing"
+    assert_has_stream "room_#{room.id}_typing"
   end
 
   test "can start typing" do
-    subscribe
+    room = Room.default_room
+    subscribe(room_id: room.id)
     
     perform :start_typing, { username: "testuser" }
     
@@ -20,8 +22,9 @@ class TypingChannelTest < ActionCable::Channel::TestCase
   test "can stop typing" do
     # Create user who is typing
     user = User.create!(username: "testuser", is_typing: true)
+    room = Room.default_room
     
-    subscribe
+    subscribe(room_id: room.id)
     
     perform :stop_typing, { username: "testuser" }
     
@@ -30,19 +33,21 @@ class TypingChannelTest < ActionCable::Channel::TestCase
   end
 
   test "broadcasts typing list update when starting typing" do
-    subscribe
+    room = Room.default_room
+    subscribe(room_id: room.id)
     
-    assert_broadcasts("typing", 1) do
+    assert_broadcasts("room_#{room.id}_typing", 1) do
       perform :start_typing, { username: "testuser" }
     end
   end
 
   test "broadcasts typing list update when stopping typing" do
     User.create!(username: "testuser", is_typing: true)
+    room = Room.default_room
     
-    subscribe
+    subscribe(room_id: room.id)
     
-    assert_broadcasts("typing", 1) do
+    assert_broadcasts("room_#{room.id}_typing", 1) do
       perform :stop_typing, { username: "testuser" }
     end
   end
@@ -50,8 +55,9 @@ class TypingChannelTest < ActionCable::Channel::TestCase
   test "stops typing on unsubscribe" do
     # Create user who is typing
     User.create!(username: "testuser", is_typing: true)
+    room = Room.default_room
     
-    subscribe(username: "testuser")
+    subscribe(username: "testuser", room_id: room.id)
     
     # Simulate unsubscribe
     unsubscribe
@@ -61,7 +67,8 @@ class TypingChannelTest < ActionCable::Channel::TestCase
   end
 
   test "handles missing username gracefully" do
-    subscribe
+    room = Room.default_room
+    subscribe(room_id: room.id)
     
     assert_nothing_raised do
       perform :start_typing, {}
@@ -70,7 +77,8 @@ class TypingChannelTest < ActionCable::Channel::TestCase
   end
 
   test "creates user if not exists when starting typing" do
-    subscribe
+    room = Room.default_room
+    subscribe(room_id: room.id)
     
     assert_difference "User.count", 1 do
       perform :start_typing, { username: "newuser" }

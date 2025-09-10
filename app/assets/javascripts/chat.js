@@ -20,6 +20,9 @@ class ChatApp {
     this.onlineUsers = new Set();
     this.typingUsers = new Set();
 
+    //created this default room but could be dynamic based on a cookie or query param
+    this.roomId = 1;
+
     this.initializeActionCable();
     this.bindEvents();
     this.styleExistingMessages();
@@ -33,29 +36,36 @@ class ChatApp {
     this.cable = ActionCable.createConsumer(wsUrl);
 
     // Subscribe to messages channel
-    this.messagesChannel = this.cable.subscriptions.create("MessagesChannel", {
-      connected: () => {
-        console.log("Connected to MessagesChannel");
+    this.messagesChannel = this.cable.subscriptions.create(
+      {
+        channel: "MessagesChannel",
+        room_id: this.roomId,
       },
+      {
+        connected: () => {
+          console.log("Connected to MessagesChannel for room", this.roomId);
+        },
 
-      disconnected: () => {
-        console.log("Disconnected from MessagesChannel");
-      },
+        disconnected: () => {
+          console.log("Disconnected from MessagesChannel");
+        },
 
-      received: (data) => {
-        this.addMessageToDOM(data);
-      },
-    });
+        received: (data) => {
+          this.addMessageToDOM(data);
+        },
+      }
+    );
 
     // Subscribe to users channel
     this.usersChannel = this.cable.subscriptions.create(
       {
         channel: "UsersChannel",
         username: this.username,
+        room_id: this.roomId,
       },
       {
         connected: () => {
-          console.log("Connected to UsersChannel");
+          console.log("Connected to UsersChannel for room", this.roomId);
         },
 
         disconnected: () => {
@@ -73,10 +83,11 @@ class ChatApp {
       {
         channel: "TypingChannel",
         username: this.username,
+        room_id: this.roomId,
       },
       {
         connected: () => {
-          console.log("Connected to TypingChannel");
+          console.log("Connected to TypingChannel for room", this.roomId);
         },
 
         disconnected: () => {
