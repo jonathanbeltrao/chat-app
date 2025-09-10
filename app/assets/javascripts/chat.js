@@ -263,20 +263,25 @@ class ChatApp {
 
   handleTypingUpdate(data) {
     switch (data.action) {
+      case "user_started_typing":
+        if (data.username !== this.username) {
+          this.typingUsers.add(data.username);
+
+          // Auto-remove after 3 seconds if no stop event received
+          setTimeout(() => {
+            this.typingUsers.delete(data.username);
+            this.updateTypingIndicator();
+          }, 3000);
+        }
+        break;
+      case "user_stopped_typing":
+        this.typingUsers.delete(data.username);
+        break;
+      // Keep backward compatibility for any existing events
       case "typing_list_updated":
-        // Replace entire typing list with fresh data from database
         this.typingUsers = new Set(
           data.typing_users.filter((username) => username !== this.username)
         );
-        break;
-      // Keep legacy support for old message types
-      case "start_typing":
-        if (data.username !== this.username) {
-          this.typingUsers.add(data.username);
-        }
-        break;
-      case "stop_typing":
-        this.typingUsers.delete(data.username);
         break;
     }
     this.updateTypingIndicator();

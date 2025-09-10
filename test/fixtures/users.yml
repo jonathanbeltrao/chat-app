@@ -2,19 +2,15 @@
 alice:
   username: "alice"
   is_online: true
-  is_typing: false
 
 bob:
   username: "bob"
   is_online: true
-  is_typing: true
 
 offline_user:
   username: "charlie"
   is_online: false
-  is_typing: false
 
-typing_user:
+dave:
   username: "dave"
   is_online: true
-  is_typing: true

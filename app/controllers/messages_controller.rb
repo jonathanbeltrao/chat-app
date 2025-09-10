@@ -30,22 +30,19 @@ class MessagesController < ApplicationController
     username = params[:username]
     
     if username.present?
-      # Mark user as offline in database
       User.mark_user_offline(username)
       
-      # Get the default room for broadcasting
       room = Room.default_room
       
-      # Broadcast updated user list to all clients
       ActionCable.server.broadcast("room_#{room.id}_users", {
         action: "users_list_updated",
         users: User.get_online_users
       })
       
-      # Broadcast updated typing list
+      # Broadcast that user stopped typing (event-only, no database)
       ActionCable.server.broadcast("room_#{room.id}_typing", {
-        action: "typing_list_updated", 
-        typing_users: User.get_typing_users
+        action: "user_stopped_typing", 
+        username: username
       })
       
       head :ok

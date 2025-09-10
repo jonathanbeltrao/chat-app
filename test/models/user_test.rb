@@ -20,10 +20,9 @@ class UserTest < ActiveSupport::TestCase
     assert_includes duplicate_user.errors[:username], "has already been taken"
   end
 
-  test "should default to offline and not typing" do
+  test "should default to offline" do
     user = User.create!(username: "newuser")
     assert_not user.is_online
-    assert_not user.is_typing
   end
 
   test "should be able to mark user online" do
@@ -44,33 +43,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.is_online
   end
 
-  test "should be able to start typing" do
-    user = users(:alice)
-    assert_not user.is_typing
-    
-    user.start_typing!
-    assert user.is_typing
-  end
-
-  test "should be able to stop typing" do
-    user = users(:typing_user)
-    assert user.is_typing
-    
-    user.stop_typing!
-    assert_not user.is_typing
-  end
-
   test "online scope should return only online users" do
     online_users = User.online
     online_users.each do |user|
       assert user.is_online
-    end
-  end
-
-  test "typing scope should return only typing users" do
-    typing_users = User.typing
-    typing_users.each do |user|
-      assert user.is_typing
     end
   end
 
@@ -97,9 +73,4 @@ class UserTest < ActiveSupport::TestCase
     assert_equal expected_count, online_users.count
   end
 
-  test "should get typing users list" do
-    typing_users = User.get_typing_users
-    expected_count = User.where(is_typing: true).count
-    assert_equal expected_count, typing_users.count
-  end
 end
