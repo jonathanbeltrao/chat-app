@@ -122,7 +122,7 @@ class ChatApp {
     const existingMessages =
       this.messagesContainer.querySelectorAll(".message");
     existingMessages.forEach((messageDiv) => {
-      const usernameElement = messageDiv.querySelector(");
+      const usernameElement = messageDiv.querySelector(".message-username");
       if (usernameElement) {
         const messageUsername = usernameElement.textContent.trim();
         const isOwnMessage = messageUsername === this.username;
